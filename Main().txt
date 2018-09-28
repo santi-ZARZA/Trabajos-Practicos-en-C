@@ -1,0 +1,686 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "Funciones.h"
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+
+// Prototipos
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int IngresoComentarista(int);
+int IngresoMovil(int);
+int IngresoCategoria(int);
+float IngresoTiempoDeTransmision(int);
+int IngresoLocalidad(int);
+void HorasPorComentarista(int,int,float);
+void LocalidadConMayorCantidadDeTransmision(int,int,int,int,int,int,int,int,int,int);
+void PorcentualHorasPorCategoria(int,int,int,int,int,int,int,int,int,int,float,float,float,float,float,float,float,float,float,float);
+void PromedioHorasPorComentarista(float,float,float,float,float,float,float,float,float,float);
+void CantidadVecesTransmitidoEnExterior(int,int,int,int,int,int,int,int,int,int);
+void CategoriaConMenorCantidadDeTransmision(int,int,int,int,int,int,int,int,int,int);
+void MayorTransmisionHoras(float,float,float,float,float,float,float,float,float,float);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+int main(int argc, char *argv[]) {
+	
+	int i;
+	int CC_Uno,CC_Dos,CC_Tres,CC_Cuatro,CC_Cinco,CC_Seis,CC_Siete,CC_Ocho,CC_Nueve,CC_Diez;// CC = CODIGO de COMENTARISTA
+	int NM_Uno,NM_Dos,NM_Tres,NM_Cuatro,NM_Cinco,NM_Seis,NM_Siete,NM_Ocho,NM_Nueve,NM_Diez;// NM = NUMERO de MOVIL
+	int NC_Uno,NC_Dos,NC_Tres,NC_Cuatro,NC_Cinco,NC_Seis,NC_Siete,NC_Ocho,NC_Nueve,NC_Diez;// NM = NUMERO de CATEGORIA
+	float CH_Uno,CH_Dos,CH_Tres,CH_Cuatro,CH_Cinco,CH_Seis,CH_Siete,CH_Ocho,CH_Nueve,CH_Diez;// CH = CANTIDAD de HORAS
+	int LO_Uno,LO_Dos,LO_Tres,LO_Cuatro,LO_Cinco,LO_Seis,LO_Siete,LO_Ocho,LO_Nueve,LO_Diez;// LO = LOCALIDAD donde transmite
+
+	int auxCC,auxNM,auxNC,auxLO;
+	float auxCH;
+	
+	for(i = 1; i<= 10; i++)
+	{
+		auxCC = IngresoComentarista(i);
+		switch(i)
+		{
+			case 1:
+				CC_Uno = auxCC;
+				NM_Uno = IngresoMovil(i);
+				NC_Uno = IngresoCategoria(i);
+				CH_Uno = IngresoTiempoDeTransmision(i);
+				LO_Uno = IngresoLocalidad(i);
+				break;
+			case 2:
+				CC_Dos = auxCC;
+				NM_Dos = IngresoMovil(i);
+				NC_Dos = IngresoCategoria(i);
+				CH_Dos = IngresoTiempoDeTransmision(i);
+				LO_Dos = IngresoLocalidad(i);
+				break;
+			case 3:
+				CC_Tres = auxCC;
+				NM_Tres = IngresoMovil(i);
+				NC_Tres = IngresoCategoria(i);
+				CH_Tres = IngresoTiempoDeTransmision(i);
+				LO_Tres = IngresoLocalidad(i);
+				break;
+			case 4:
+				CC_Cuatro = auxCC;
+				NM_Cuatro = IngresoMovil(i);
+				NC_Cuatro = IngresoCategoria(i);
+				CH_Cuatro = IngresoTiempoDeTransmision(i);
+				LO_Cuatro = IngresoLocalidad(i);
+				break;
+			case 5:
+				CC_Cinco = auxCC;
+				NM_Cinco = IngresoMovil(i);
+				NC_Cinco = IngresoCategoria(i);
+				CH_Cinco = IngresoTiempoDeTransmision(i);
+				LO_Cinco = IngresoLocalidad(i);
+				break;
+			case 6:
+				CC_Seis = auxCC;
+				NM_Seis = IngresoMovil(i);
+				NC_Seis = IngresoCategoria(i);
+				CH_Seis = IngresoTiempoDeTransmision(i);
+				LO_Seis = IngresoLocalidad(i);
+
+				break;
+			case 7:
+				CC_Siete = auxCC;
+				NM_Siete = IngresoMovil(i);
+				NC_Siete = IngresoCategoria(i);
+				CH_Siete = IngresoTiempoDeTransmision(i);
+				LO_Siete = IngresoLocalidad(i);
+				break;
+			case 8:
+				CC_Ocho = auxCC;
+				NM_Ocho = IngresoMovil(i);
+				NC_Ocho = IngresoCategoria(i);
+				CH_Ocho = IngresoTiempoDeTransmision(i);
+				LO_Ocho = IngresoLocalidad(i);
+				break;
+			case 9:
+				CC_Nueve = auxCC;
+				NM_Nueve = IngresoMovil(i);
+				NC_Nueve = IngresoCategoria(i);
+				CH_Nueve = IngresoTiempoDeTransmision(i);
+				LO_Nueve = IngresoLocalidad(i);
+				break;	
+			case 10:
+				CC_Diez = auxCC;
+				NM_Diez = IngresoMovil(i);
+				NC_Diez = IngresoCategoria(i);
+				CH_Diez = IngresoTiempoDeTransmision(i);
+				LO_Diez = IngresoLocalidad(i);
+				break;
+			default:
+				break;		
+			
+		}
+	}
+	
+	system("cls");
+	
+	for(i=1;i<=10;i++)
+	{
+		switch(i)
+		{
+			case 1:
+				HorasPorComentarista(i,CC_Uno,CH_Uno);
+				break;
+			case 2:
+				HorasPorComentarista(i,CC_Dos,CH_Dos);
+				break;	
+			case 3:
+				HorasPorComentarista(i,CC_Tres,CH_Tres);
+				break;
+			case 4:
+				HorasPorComentarista(i,CC_Cuatro,CH_Cuatro);
+				break;
+			case 5:
+				HorasPorComentarista(i,CC_Cinco,CH_Cinco);
+				break;
+			case 6:
+				HorasPorComentarista(i,CC_Seis,CH_Seis);
+				break;	
+			case 7:
+				HorasPorComentarista(i,CC_Siete,CH_Siete);
+				break;
+			case 8:
+				HorasPorComentarista(i,CC_Ocho,CH_Ocho);
+				break;		
+			case 9:
+				HorasPorComentarista(i,CC_Nueve,CH_Nueve);
+				break;
+			case 10:
+				HorasPorComentarista(i,CC_Diez,CH_Diez);
+				break;
+		}
+	}
+	printf("--------------------------------------------------------------------------------------");
+	
+	LocalidadConMayorCantidadDeTransmision(LO_Uno,LO_Dos,LO_Tres,LO_Cuatro,LO_Cinco,LO_Seis,LO_Siete,LO_Ocho,LO_Nueve,LO_Diez);
+	
+	printf("--------------------------------------------------------------------------------------");
+	
+	PorcentualHorasPorCategoria(NC_Uno,NC_Dos,NC_Tres,NC_Cuatro,NC_Cinco,NC_Seis,NC_Siete,NC_Ocho,NC_Nueve,NC_Diez,CH_Uno,CH_Dos,CH_Tres,CH_Cuatro,CH_Cinco,CH_Seis,CH_Siete,CH_Ocho,CH_Nueve,CH_Diez);
+	
+	printf("--------------------------------------------------------------------------------------");
+
+	PromedioHorasPorComentarista(CH_Uno,CH_Dos,CH_Tres,CH_Cuatro,CH_Cinco,CH_Seis,CH_Siete,CH_Ocho,CH_Nueve,CH_Diez);
+	
+	printf("--------------------------------------------------------------------------------------");
+	
+	CantidadVecesTransmitidoEnExterior(LO_Uno,LO_Dos,LO_Tres,LO_Cuatro,LO_Cinco,LO_Seis,LO_Siete,LO_Ocho,LO_Nueve,LO_Diez);
+	
+	printf("--------------------------------------------------------------------------------------");
+		
+	CategoriaConMenorCantidadDeTransmision(NC_Uno,NC_Dos,NC_Tres,NC_Cuatro,NC_Cinco,NC_Seis,NC_Siete,NC_Ocho,NC_Nueve,NC_Diez);
+		
+	printf("--------------------------------------------------------------------------------------");
+			
+	MayorTransmisionHoras(CH_Uno,CH_Dos,CH_Tres,CH_Cuatro,CH_Cinco,CH_Seis,CH_Siete,CH_Ocho,CH_Nueve,CH_Diez);
+			
+	printf("--------------------------------------------------------------------------------------");
+				
+				
+	printf("--------------------------------------------------------------------------------------");
+	return 0;
+}
+
+// Funciones
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+int IngresoComentarista(int NumeroDeComentarista){
+	
+	int retorno;
+	system("cls");
+	printf("Ingrese el Codigo del Comentarista N %d: ",NumeroDeComentarista);
+	fflush(stdin);
+	scanf("%d",&retorno);
+	
+	return retorno;
+}
+
+int IngresoMovil(int NumeroDeComentarista){
+	
+	int retorno;
+	system("cls");
+	printf("Escoja El Movil en el cual Transmitira el comentarista N %d\n",NumeroDeComentarista);
+	printf("Movil N 1\nMovil N 2\nMovil N 3\nMovil N 4\nMovil N 5\n");
+	printf("Ingrese un Movil: ");
+	fflush(stdin);
+	scanf("%d",&retorno);
+	
+	return retorno;
+}
+
+int IngresoCategoria(int NumeroDeComentarista){
+	
+	int retorno;
+	system("cls");
+	printf("Ingrese La categoria en la que trabajara el comentarista N %d\n",NumeroDeComentarista);
+	printf("1. Policiales\n2. Politicas\n3. Economia\n");
+	printf("Ingrese la categoria: ");
+	fflush(stdin);
+	scanf("%d",&retorno);
+	
+	return retorno;
+}
+
+float IngresoTiempoDeTransmision(int NumeroDeComentarista){
+	
+	float retorno;
+	system("cls");
+	printf("Ingrese el tiempo de transmision del comentarista N %d: ",NumeroDeComentarista);
+	fflush(stdin);
+	scanf("%f",&retorno);
+	
+	return retorno;
+}
+
+int IngresoLocalidad(int NumeroDeComentarista){
+	
+	int retorno;
+	system("cls");
+	printf("Ingrese la localidad en donde transmite el comentarista N %d\n",NumeroDeComentarista);
+	printf("1. Capital Federal\n2. Gran Bs As\n3. Interior\n4. Exterior\n");
+	printf("Ingrese la Localidad: ");
+	fflush(stdin);
+	scanf("%d",&retorno);
+	
+	return retorno;
+}
+
+void HorasPorComentarista(int indice, int codigoComentarista, float tiempoTransmision){
+	
+	printf("\nEl Comentarista N %d (Codigo %d) trabajo %.2f hs\n",indice,codigoComentarista,tiempoTransmision);
+}
+
+void LocalidadConMayorCantidadDeTransmision(int localUno,int localDos,int localTres,int localCuatro,int localCinco,int localSeis,int localSiete,int localOcho,int localNueve,int localDiez){
+	int i;
+	int cantCF = 0;
+	int cantGBA = 0;
+	int cantIN = 0;
+	int cantEX = 0;
+	int aux;
+	
+	for(i=1;i<=10;i++)
+	{
+		switch(i)
+		{
+			case 1:
+				aux = localUno;
+				break;
+			case 2:
+				aux = localDos;
+				break;
+			case 3:
+				aux = localTres;
+				break;
+			case 4:
+				aux = localCuatro;
+				break;
+			case 5:
+				aux = localCinco;
+				break;
+			case 6:
+				aux = localSeis;
+				break;
+			case 7:
+				aux = localSiete;
+				break;
+			case 8:
+				aux = localOcho;
+				break;
+			case 9:
+				aux = localNueve;
+				break;
+			case 10:
+				aux = localDiez;
+				break;	
+		}
+		
+		switch(aux)
+		{
+			case 1:
+				cantCF++;
+				break;
+			case 2:
+				cantGBA++;
+				break;
+			case 3:
+				cantIN++;
+				break;
+			case 4:
+				cantEX++;
+				break;
+		}
+	}
+	
+	if(	cantCF > cantGBA && cantCF > cantIN && cantCF > cantEX)
+	{
+		printf("\nLa Localidad con Mayor cantidad de transmisiones es Capital Federal.\n");
+	}
+	else if(cantGBA > cantIN && cantGBA > cantEX)
+	{
+		printf("\nLa Localidad con Mayor cantidad de transmisiones es Gran Bs As.\n");
+	}
+	else if(cantIN > cantEX)
+	{
+		printf("\nLa Localidad con Mayor cantidad de transmisiones es la del Interior.\n");
+	}
+	else
+	{
+		printf("La Localidad con Mayor cantidad de transmisiones es la del Exterior.\n");
+	}
+
+}
+
+void PorcentualHorasPorCategoria(int CategoriaUno, int CategoriaDos, int CategoriaTres, int CategoriaCuatro, int CategoriaCinco, int CategoriaSeis, int CategoriaSiete, int CategoriaOcho, int CategoriaNueve, int CategoriaDiez, float HorasUno, float HorasDos, float HorasTres, float HorasCuatro, float HorasCinco, float HorasSeis, float HorasSiete, float HorasOcho, float HorasNueve, float HorasDiez)
+{
+	int i;
+	int cantCategoriaUno = 0;
+	int cantCategoriaDos = 0;
+	int cantCategoriaTres = 0;
+	
+	float cantHorasCategoriaUno = 0;
+	float cantHorasCategoriaDos = 0;
+	float cantHorasCategoriaTres = 0;
+	
+	int auxC;
+	float auxH;
+	
+	for(i = 1; i<=10;i++)
+	{
+		switch(i)
+		{
+			case 1:
+				auxC = CategoriaUno;
+				auxH = HorasUno;
+				break;
+			case 2:
+				auxC = CategoriaDos;
+				auxH = HorasDos;
+				break;
+			case 3:
+				auxC = CategoriaTres;
+				auxH = HorasTres;
+				break;
+			case 4:
+				auxC = CategoriaCuatro;
+				auxH = HorasCuatro;
+				break;
+			case 5:
+				auxC = CategoriaCinco;
+				auxH = HorasCinco;
+				break;
+			case 6:
+				auxC = CategoriaSeis;
+				auxH = HorasSeis;
+				break;			
+			case 7:
+				auxC = CategoriaSiete;
+				auxH = HorasSiete;
+				break;			
+			case 8:
+				auxC = CategoriaOcho;
+				auxH = HorasOcho;
+				break;			
+			case 9:
+				auxC = CategoriaNueve;
+				auxH = HorasNueve;
+				break;			
+			case 10:
+				auxC = CategoriaDiez;
+				auxH = HorasDiez;
+				break;
+		}
+		
+		switch(auxC)
+		{
+			case 1:
+				cantCategoriaUno++;
+				cantHorasCategoriaUno+= auxH;
+				break;
+			case 2:
+				cantCategoriaDos++;
+				cantHorasCategoriaDos+= auxH;
+				break;
+			case 3:
+				cantCategoriaTres++;
+				cantHorasCategoriaTres+= auxH;
+				break;
+		}
+	
+	}
+	float cantHotasTotales = cantHorasCategoriaUno + cantHorasCategoriaDos + cantHorasCategoriaTres;
+	
+	printf("\nLa cantidad de Horas Totales es: %.2f\n",cantHotasTotales);
+	printf("La cantidad de Horas por Promedio de la categoria Policiales es de: %.2f\n",cantHorasCategoriaUno/cantHotasTotales);
+	printf("La cantidad de Horas por Promedio de la categoria Politicas es de: %.2f\n",cantHorasCategoriaDos/cantHotasTotales);
+	printf("La cantidad de Horas por Promedio de la categoria Economicas es de: %.2f\n",cantHorasCategoriaTres/cantHotasTotales);
+
+	
+}
+
+void PromedioHorasPorComentarista(float HorasUno, float HorasDos, float HorasTres, float HorasCuatro, float HorasCinco, float HorasSeis, float HorasSiete, float HorasOcho, float HorasNueve, float HorasDiez)
+{
+	int i;	
+	int cantTotal = 0;
+	
+	for(i = 1; i<=10;i++)
+	{
+		switch(i)
+		{
+			case 1:
+				cantTotal += HorasUno;
+				break;
+			case 2:
+				cantTotal += HorasDos;
+				break;
+			case 3:
+				cantTotal += HorasTres;
+				break;
+			case 4:
+				cantTotal += HorasCuatro;
+				break;
+			case 5:
+				cantTotal += HorasCinco;
+				break;
+			case 6:
+				cantTotal += HorasSeis;
+				break;			
+			case 7:
+				cantTotal += HorasSiete;
+				break;			
+			case 8:
+				cantTotal += HorasOcho;
+				break;			
+			case 9:
+				cantTotal += HorasNueve;
+				break;			
+			case 10:
+				cantTotal += HorasDiez;
+				break;
+		}
+		
+	}
+	
+	for(i = 1; i<=10;i++)
+	{
+		switch(i)
+		{
+			case 1:
+				printf("\nEl Promedio de Horas trabajadas por el comentarista N %d es : %.2f\n",i,HorasUno/cantTotal);
+				break;
+			case 2:
+				printf("\nEl Promedio de Horas trabajadas por el comentarista N %d es : %.2f\n",i,HorasDos/cantTotal);
+				break;
+			case 3:
+				printf("\nEl Promedio de Horas trabajadas por el comentarista N %d es : %.2f\n",i,HorasTres/cantTotal);
+				break;
+			case 4:
+				printf("\nEl Promedio de Horas trabajadas por el comentarista N %d es : %.2f\n",i,HorasCuatro/cantTotal);
+				break;
+			case 5:
+				printf("\nEl Promedio de Horas trabajadas por el comentarista N %d es : %.2f\n",i,HorasCinco/cantTotal);
+				break;
+			case 6:
+				printf("\nEl Promedio de Horas trabajadas por el comentarista N %d es : %.2f\n",i,HorasSeis/cantTotal);
+				break;			
+			case 7:
+				printf("\nEl Promedio de Horas trabajadas por el comentarista N %d es : %.2f\n",i,HorasSiete/cantTotal);
+				break;			
+			case 8:
+				printf("\nEl Promedio de Horas trabajadas por el comentarista N %d es : %.2f\n",i,HorasOcho/cantTotal);
+				break;			
+			case 9:
+				printf("\nEl Promedio de Horas trabajadas por el comentarista N %d es : %.2f\n",i,HorasNueve/cantTotal);
+				break;			
+			case 10:
+				printf("\nEl Promedio de Horas trabajadas por el comentarista N %d es : %.2f\n",i,HorasDiez/cantTotal);
+				break;
+		}
+	}
+}
+
+void CantidadVecesTransmitidoEnExterior(int locUno, int locDos, int locTres, int locCuatro, int locCinco, int locSeis, int locSiete, int locOcho, int locNueve, int locDiez)
+{
+	int i;
+	int aux;
+	int cantExterior = 0;
+	
+	for(i=1;i<=10;i++)
+	{
+		switch(i)
+		{
+			case 1:
+				aux = locUno;
+				break;
+			case 2:
+				aux = locDos;
+				break;
+			case 3:
+				aux = locTres;
+				break;
+			case 4:
+				aux = locCuatro;
+				break;
+			case 5:
+				aux = locCinco;
+				break;
+			case 6:
+				aux = locSeis;
+				break;			
+			case 7:
+				aux = locSiete;
+				break;			
+			case 8:
+				aux = locOcho;
+				break;			
+			case 9:
+				aux = locNueve;
+				break;			
+			case 10:
+				aux = locDiez;
+				break;
+		}
+		
+		switch(aux)
+		{
+			case 4:
+				cantExterior++;
+				break;
+			default:
+				break;
+		}
+	
+	}
+	
+	printf("\nLa cantidad de veces transmisiones desde el exterior es %d\n",cantExterior);
+	
+}
+
+void CategoriaConMenorCantidadDeTransmision(int CategoriaUno, int CategoriaDos, int CategoriaTres, int CategoriaCuatro, int CategoriaCinco, int CategoriaSeis, int CategoriaSiete, int CategoriaOcho, int CategoriaNueve, int CategoriaDiez)
+{
+	int i;
+	int aux;
+	int cantCateUno = 0;
+	int cantCateDos = 0;
+	int cantCateTres = 0;
+		
+	for(i=1;i<=10;i++)
+	{
+		switch(i)
+		{
+			case 1:
+				aux = CategoriaUno;
+				break;
+			case 2:
+				aux = CategoriaDos;
+				break;
+			case 3:
+				aux = CategoriaTres;
+				break;
+			case 4:
+				aux = CategoriaCuatro;
+				break;
+			case 5:
+				aux = CategoriaCinco;
+				break;
+			case 6:
+				aux = CategoriaSeis;
+				break;
+			case 7:
+				aux = CategoriaSiete;
+				break;
+			case 8:
+				aux = CategoriaOcho;
+				break;
+			case 9:
+				aux = CategoriaNueve;
+				break;
+			case 10:
+				aux = CategoriaDiez;
+				break;	
+		}
+		
+		switch(aux)
+		{
+			case 1:
+				cantCateUno++;
+				break;
+			case 2:
+				cantCateDos++;
+				break;
+			case 3:
+				cantCateTres++;
+				break;
+
+		}
+	}
+	
+	if(cantCateUno < cantCateDos && cantCateUno < cantCateTres)
+	{
+		printf("\nLa categoria Menos Vista es la de Policiales.\n");
+	}
+	else if(cantCateDos < cantCateTres)
+	{
+		printf("\nLa categoria Menos Vista es la de Politica.\n");
+	}
+	else
+	{
+		printf("\nLa categoria Menos Vista es la de Economia.\n");
+	}
+}
+
+void MayorTransmisionHoras(float HorasUno, float HorasDos, float HorasTres, float HorasCuatro, float HorasCinco, float HorasSeis, float HorasSiete, float HorasOcho, float HorasNueve, float HorasDiez)
+{
+	int i;
+	int aux, auxPos;
+	float max = 0;
+	for(i = 1; i<=10;i++)
+	{
+		switch(i)
+		{
+			case 1:
+				aux = HorasUno;
+				break;
+			case 2:
+				aux = HorasDos;
+				break;
+			case 3:
+				aux = HorasTres;
+				break;
+			case 4:
+				aux = HorasCuatro;
+				break;
+			case 5:
+				aux = HorasCinco;
+				break;
+			case 6:
+				aux = HorasSeis;
+				break;			
+			case 7:
+				aux = HorasSiete;
+				break;			
+			case 8:
+				aux = HorasOcho;
+				break;			
+			case 9:
+				aux = HorasNueve;
+				break;			
+			case 10:
+				aux = HorasDiez;
+				break;
+		}
+		
+		if(aux > max)
+		{
+			max = aux;
+			auxPos = i;
+		}
+		
+	}
+	
+	printf("\nla Transmision N %d es la de mayor duracion con %.2f hs.\n",auxPos,max);
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
